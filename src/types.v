@@ -7,7 +7,7 @@ mut:
 
 pub struct Lua_Buffer {
 mut:
-	buffer &C.luaL_Buffer
+	buffer C.luaL_Buffer
 }
 
 pub struct Lua_Reg {
@@ -18,4 +18,39 @@ mut:
 pub struct Lua_C_Function {
 mut:
 	func &C.lua_CFunction
+}
+
+pub struct Lua_K_Function {
+mut:
+	func &C.lua_KFunction
+}
+
+pub struct Lua_WarnFunction {
+mut:
+	func C.lua_WarnFunction
+}
+
+pub struct Lua_Alloc {
+mut:
+	alloc C.lua_Alloc
+}
+
+pub struct Lua_KContext {
+mut:	
+	ctx C.lua_KContext
+}
+
+pub struct Lua_Reader {
+mut:
+	r C.lua_Reader
+}
+
+pub struct Lua_Writer {
+mut:
+	w C.lua_Writer
+}
+
+pub struct Valist {
+mut:
+	list C.va_list
 }
