@@ -54,3 +54,13 @@ pub struct Valist {
 mut:
 	list C.va_list
 }
+
+pub struct Lua_Hook {
+mut:
+	hook C.lua_Hook
+}
+
+pub struct Lua_Debug {
+mut:
+	debug C.lua_Debug
+}

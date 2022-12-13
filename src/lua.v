@@ -439,22 +439,20 @@ pub fn lua_close_slot(state Lua_State, idx int) {
 	C.lua_closeslot(state.state, idx)
 }
 
-// TODO: Lua_Debug type
-
 pub fn lua_get_stack(state Lua_State, level int, ar Lua_Debug) int {
-	return C.lua_getstack(state.state, level ar.debug)
+	return C.lua_getstack(state.state, level, &ar.debug)
 }
 
 pub fn lua_get_info(state Lua_State, what string, ar Lua_Debug) int {
-	return C.lua_getinfo(state.state, what.str, ar.debug)
+	return C.lua_getinfo(state.state, what.str, &ar.debug)
 }
 
 pub fn lua_get_local(state Lua_State, ar Lua_Debug, n int) string {
-	unsafe { return C.lua_getlocal(state.state, ar.debug, n).vstring() }
+	unsafe { return C.lua_getlocal(state.state, &ar.debug, n).vstring() }
 }
 
 pub fn lua_set_local(state Lua_State, ar Lua_Debug, n int) string {
-	unsafe { return C.lua_setlocal(state.state, ar.debug, n).vstring() }
+	unsafe { return C.lua_setlocal(state.state, &ar.debug, n).vstring() }
 }
 
 pub fn lua_get_up_value(state Lua_State, func_index int, n int) string {
@@ -473,14 +471,12 @@ pub fn lua_up_value_join(state Lua_State, fidx1 int, n1 int, fidx2 int, n2 int) 
 	C.lua_upvaluejoin(state.state, fidx1, n1, fidx2, n2)
 }
 
-// TODO: Lua_Hook type
-
-pub fn lua_set_hook(state Lua_State, func C.Lua_Hook, mask int, count int) {
+pub fn lua_set_hook(state Lua_State, func Lua_Hook, mask int, count int) {
 	C.lua_sethook(state.state, func.hook, mask, count)
 }
 
 pub fn lua_get_hook(state Lua_State) Lua_Hook {
-	return C.lua_gethook(state.state)
+	return Lua_Hook { C.lua_gethook(state.state) }
 }
 
 pub fn lua_get_hook_mask(state Lua_State) int {
