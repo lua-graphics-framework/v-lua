@@ -1,5 +1,5 @@
 To Do:
-- [ ] Finish V bindings
+- [x] Finish V bindings
 - [ ] Helper macro bindings
 - [ ] Examples directory
 - [ ] Fill out README.md
